@@ -3,19 +3,18 @@ const mongoose = require("mongoose");
 const reservationSchema = new mongoose.Schema(
   {
     sku: { type: String, required: true },
-    userId: { type: String, required: true }, // who reserved
-    quantity: { type: Number, default: 1 },
+    userId: { type: String, required: true },
+    quantity: { type: Number, required: true },
     status: {
       type: String,
       enum: ["active", "cancelled", "expired", "confirmed"],
-      default: "active",
+      default: "active"
     },
-    expiresAt: { type: Date, required: true }, // 5 min expiry
+    expiresAt: { type: Date, required: true }
   },
   { timestamps: true }
 );
 
-// Auto expire reservation
 reservationSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 module.exports = mongoose.model("Reservation", reservationSchema);
