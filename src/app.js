@@ -1,8 +1,10 @@
 const express = require("express");
 const dotenv = require("dotenv");
-
 const cors = require("cors");
 const database = require("./config/database");
+
+const inventoryRoutes = require("./routes/inventoryRoutes");
+const checkoutRoutes = require("./routes/checkOutRoutes");
 
 dotenv.config();
 
@@ -16,6 +18,9 @@ app.get("/", (req, res) => {
   res.send("Backend is running");
 });
 
+// ROUTES
+app.use("/inventory", inventoryRoutes);
+app.use("/checkout", checkoutRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
