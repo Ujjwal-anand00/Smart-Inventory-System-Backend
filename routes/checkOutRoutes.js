@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { confirmCheckout, cancelCheckout } = require("../controllers/reservationController");
+const { confirmCheckout, cancelCheckout } = require("../controllers/reservationControllers");
 
 router.post("/confirm", confirmCheckout);
 router.post("/cancel", cancelCheckout);

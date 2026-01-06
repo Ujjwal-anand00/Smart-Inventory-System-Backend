@@ -7,9 +7,9 @@ exports.connect = () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
-    .then(() => console.log("DB ka connection sucessful"))
+    .then(() => console.log("DB connection sucessful"))
     .catch((err) => {
-      console.log("DB ka connection failed");
+      console.log("DB connection failed");
       console.error(err);
       process.exit(1);
     });
